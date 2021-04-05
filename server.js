@@ -1,13 +1,13 @@
 // Import Express
 const express = require('express');
 
+// Import connectDB from db file
+const connectDB = require('./config/db');
+
 // Importing routes
 const userRoute = require('./routes/api/users');
 const authRoute = require('./routes/api/auth');
 const contactsRoute = require('./routes/api/contacts');
-
-// Import connectDB from db file
-const connectDB = require('./config/db');
 
 // Initialize express 
 const app = express();
@@ -15,9 +15,15 @@ const app = express();
 // Connect to MOngoDB
 connectDB();
 
-// App respond with the message to the root path
-app.get('/', (req, res) => res.json({msg: 'Welcome to contact manager API'}));
+// Initializing middleware
+app.use(express.json({extended: false}))
 
+// App respond with the message to the root path
+app.get('/', (req, res) => res.json({
+    msg: 'Welcome to contact manager API'
+}));
+
+// Define routes
 app.use('/api/users', userRoute);
 app.use('/api/auth', authRoute);
 app.use('/api/contacts', contactsRoute);
