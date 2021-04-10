@@ -65,7 +65,7 @@ router.post('/', [
         // Generates jwt 
         jwToken.sign(payload, config.get('jwtSecret'), {
             // Login session timeout
-            expiresIn: 360000000
+            expiresIn: 3600000
         },
         
         (err, token) => {
