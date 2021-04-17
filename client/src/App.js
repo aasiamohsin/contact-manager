@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './App.css';
-
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ContactState } from './Context/Contacts/ContactState';
+import { Navbar } from './Components/Layout/Navbar';
+import { Home } from './Components/Pages/Home';
+import { About } from './Components/Pages/About';
+ 
 const App = () => {
+
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
+    <ContactState>
+      <Router>
+        <Fragment>
+          <Navbar/>
+          <div className="container">
+            <Switch>
+              <Route exact path = '/' component = {Home}/>
+              <Route exact path = '/about' component = {About}/>
+            </Switch>
+          </div>
+        </Fragment>
+      </Router>
+    </ContactState>
   );
 }
 

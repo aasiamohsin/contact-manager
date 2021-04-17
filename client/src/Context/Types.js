@@ -1,0 +1,9 @@
+export const Add_Contact = 'Add_Contact';
+export const Delete_Contact = 'Delete_Contact';
+export const Set_Current = 'Set_Current';
+export const Clear_Current = 'Clear_Current';
+export const Update_Current = 'Update_Current';
+export const Filter_Contact = 'Filter_Contact';
+export const Clear_Filter = 'Clear_Filter';
+export const Set_Alert = 'Set_Alert';
+export const Remove_Alert = 'Remove_Alert';
