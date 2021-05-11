@@ -10,9 +10,9 @@ export const Home = () => {
   return (
     <div>
       <div className='add-form'>
-        <h2 style={{ color: 'white' }}>Contacts</h2>
+        <h2>Contacts</h2>
         <h3
-          style={{ cursor: 'pointer', color: 'white' }}
+          style={{ cursor: 'pointer' }}
           onClick={() => setShowForm(!showForm)}
         >
           {showForm ? (
