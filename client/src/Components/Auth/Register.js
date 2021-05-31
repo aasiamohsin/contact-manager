@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { AlertContext } from '../../Context/Alert/AlertContext';
+import { AuthContext } from '../../Context/Auth/AuthContext';
 
-export const Register = () => {
+export const Register = (props) => {
+  const { setAlert } = useContext(AlertContext);
+  const { registerUser, error, clearErrors, isAuthenticated } =
+    useContext(AuthContext);
+
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -10,13 +16,35 @@ export const Register = () => {
 
   const { name, email, password, password2 } = user;
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push('/');
+    }
+    if (error === 'User with this email already exist') {
+      setAlert(error, 'danger');
+      clearErrors();
+    }
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
+
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('User Registered');
+    if (!name || !email || !password) {
+      setAlert('Please enter all fields', 'danger');
+    } else if (password !== password2) {
+      setAlert('Password and Confirm Password do not match', 'danger');
+    } else {
+      registerUser({
+        name,
+        email,
+        password,
+      });
+      console.log('User Registered');
+    }
   };
 
   return (
@@ -29,7 +57,7 @@ export const Register = () => {
         </div>
         <div className='form-group'>
           <label htmlFor='email'>Email</label>
-          <input type='text' name='email' value={email} onChange={onChange} />
+          <input type='email' name='email' value={email} onChange={onChange} />
         </div>
         <div className='form-group'>
           <label htmlFor='password'>Password</label>
@@ -38,6 +66,7 @@ export const Register = () => {
             name='password'
             value={password}
             onChange={onChange}
+            minLength='6'
           />
         </div>
         <div className='form-group'>
@@ -47,6 +76,7 @@ export const Register = () => {
             name='password2'
             value={password2}
             onChange={onChange}
+            minLength='6'
           />
         </div>
         <input type='submit' value='Register' className='btn' />

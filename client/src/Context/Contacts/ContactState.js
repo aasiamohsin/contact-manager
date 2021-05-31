@@ -10,8 +10,6 @@ import {
   Update_Current,
   Filter_Contact,
   Clear_Filter,
-  Set_Alert,
-  Remove_Alert,
 } from '../Types';
 
 export const ContactState = ({ children }) => {

@@ -27,7 +27,8 @@ body {
 }
 
 .nav-bar ul > li {
-  margin: 10px;
+  display: inline-block;
+  margin-top: 7px;
   list-style-type: none;
   font-size: 18px;
 }
@@ -44,6 +45,7 @@ body {
 }
 
 .container {
+  position: relative;
   background-color: var(--dark-color);
   border: 1px solid var(--dark-color);
   box-shadow: 0 0 3px 2px var(--dark-color);
@@ -55,24 +57,22 @@ body {
 .filter-form {
   position: relative;
   display: flex;
-  /* margin: 10px; */
 }
 
 .filter-form > i {
   position: absolute;
   cursor: pointer;
   z-index: 1;
-  float: right;
-  top: 14px;
-  right: 22px;
+  top: 13px;
+  right: 28px;
   color: var(--light-color);
 }
 
 .filter-form > input {
   background-color: var(--color);
-  border: 1px solid var(--light-color);
+  border: 2px solid var(--light-color);
   box-shadow: 0 0 7px 3px var(--light-color) inset;
-  border-radius: 15px;
+  border-radius: 4px;
   width: 675px;
   padding: 10px 15px;
   margin: 0 13px;
@@ -138,6 +138,10 @@ body {
 
 .btn:focus {
   outline: none;
+}
+
+.btn:hover {
+  color: var(--light-color);
 }
 
 .about-info {
@@ -222,7 +226,7 @@ input:focus {
   background-color: var(--color);
   border: 1px solid var(--light-color);
   box-shadow: 0 0 7px 2px var(--light-color) inset;
-  border-radius: 15px;
+  border-radius: 7px;
   margin-bottom: 5px;
   width: 450px;
   padding: 10px;
@@ -236,6 +240,28 @@ input:focus {
   margin-top: 20px;
   letter-spacing: 1px;
   border-radius: 15px;
+}
+
+.alert {
+  position: absolute;
+  width: 100%;
+  font: 18px bold;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid var(--dark-color);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  z-index: 1;
+}
+
+.alert-danger {
+  color: var(--color);
+  background-color: #c0392b;
+}
+
+.alert-success {
+  color: var(--color);
+  background-color: #00bb38;
 }
 
 .item-enter {

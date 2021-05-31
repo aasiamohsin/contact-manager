@@ -1,11 +1,18 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect, useContext } from 'react';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { Contacts } from '../Contacts/Contacts';
 import { AddContact } from '../Contacts/AddContact';
 import { FilterContact } from '../Contacts/FilterContact';
+import { AuthContext } from '../../Context/Auth/AuthContext';
 
 export const Home = () => {
   const [showForm, setShowForm] = useState(false);
+  const { loadUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    loadUser();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>
