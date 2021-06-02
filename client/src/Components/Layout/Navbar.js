@@ -2,12 +2,15 @@ import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/Auth/AuthContext';
+import { contactContext } from '../../Context/Contacts/ContactContext';
 
 export const Navbar = ({ title, icon }) => {
   const { isAuthenticated, logout, user } = useContext(AuthContext);
+  const { clearContacts } = useContext(contactContext);
 
   const onLogout = () => {
     logout();
+    clearContacts();
   };
 
   const authLinks = (
@@ -25,10 +28,10 @@ export const Navbar = ({ title, icon }) => {
   const guestLinks = (
     <Fragment>
       <li>
-        <Link to='/register'>Register</Link>
+        <Link to='/login'>Login</Link>
       </li>
       <li>
-        <Link to='/login'>Login</Link>
+        <Link to='/about'>About</Link>
       </li>
     </Fragment>
   );

@@ -30,7 +30,7 @@ body {
   display: inline-block;
   margin-top: 7px;
   list-style-type: none;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .nav-bar > ul > li > a {
@@ -242,6 +242,16 @@ input:focus {
   border-radius: 15px;
 }
 
+.form-container > strong > a {
+  text-decoration: none;
+  color: #0340c2;
+}
+
+.form-container > strong > a:hover {
+  text-decoration: underline 2px var(--dark-color);
+  color: var(--dark-color);
+}
+
 .alert {
   position: absolute;
   width: 100%;
@@ -289,12 +299,16 @@ input:focus {
     align-items: center;
   }
 
+  .container {
+    max-width: 400px;
+  }
+
   .form-group > input,
   label {
-    width: 370px;
+    width: 350px;
   }
 
   .form-container .btn {
-    width: 370px;
+    width: 350px;
   }
 }

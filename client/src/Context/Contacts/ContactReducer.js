@@ -1,10 +1,13 @@
 import {
   Add_Contact,
+  Get_Contacts,
   Delete_Contact,
+  Contact_Error,
   Set_Current,
   Clear_Current,
   Update_Current,
   Filter_Contact,
+  Clear_Contacts,
   Clear_Filter,
 } from '../Types';
 
@@ -15,18 +18,24 @@ export const ContactReducer = (state, action) => {
         ...state,
         contacts: [...state.contacts, action.payload],
       };
+    case Get_Contacts:
+      return {
+        ...state,
+        contacts: action.payload,
+        loading: false,
+      };
     case Delete_Contact:
       return {
         ...state,
         contacts: state.contacts.filter(
-          (contact) => contact.id !== action.payload
+          (contact) => contact._id !== action.payload
         ),
       };
     case Update_Current:
       return {
         ...state,
         contacts: state.contacts.map((contact) =>
-          contact.id === action.payload.id ? action.payload : contact
+          contact._id === action.payload._id ? action.payload : contact
         ),
       };
     case Set_Current:
@@ -51,6 +60,19 @@ export const ContactReducer = (state, action) => {
       return {
         ...state,
         filtered: null,
+      };
+    case Contact_Error:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case Clear_Contacts:
+      return {
+        ...state,
+        contacts: null,
+        currentContact: null,
+        filtered: null,
+        error: null,
       };
     default:
       return state;

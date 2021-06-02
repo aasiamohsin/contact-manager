@@ -1,5 +1,8 @@
 export const Add_Contact = 'Add_Contact';
 export const Delete_Contact = 'Delete_Contact';
+export const Clear_Contacts = 'Clear_Contacts';
+export const Get_Contacts = 'Get_Contacts';
+export const Contact_Error = 'Contact_Error';
 export const Set_Current = 'Set_Current';
 export const Clear_Current = 'Clear_Current';
 export const Update_Current = 'Update_Current';

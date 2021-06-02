@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { AlertContext } from '../../Context/Alert/AlertContext';
 import { AuthContext } from '../../Context/Auth/AuthContext';
 
@@ -81,6 +82,9 @@ export const Register = (props) => {
         </div>
         <input type='submit' value='Register' className='btn' />
       </form>
+      <strong>
+        Already registered ? <Link to='/login'>Login</Link>
+      </strong>
     </div>
   );
 };

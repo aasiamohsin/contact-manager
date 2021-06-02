@@ -2,12 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import { contactContext } from '../../Context/Contacts/ContactContext';
 
 export const AddContact = () => {
-  const {
-    addContact,
-    updateContact,
-    currentContact,
-    clearCurrent,
-  } = useContext(contactContext);
+  const { addContact, updateContact, currentContact, clearCurrent } =
+    useContext(contactContext);
 
   const [contact, setContact] = useState({
     name: '',

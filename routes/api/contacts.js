@@ -43,15 +43,16 @@ router.post(
       });
     }
 
-    const { name, email, phone } = req.body;
+    const { name, email, phone, type } = req.body;
 
     try {
       // Creates new contact
-      const newContact = await new Contacts({
+      const newContact = new Contacts({
         user: req.user.id,
         name,
         email,
         phone,
+        type,
       });
 
       // Save new contact in database
@@ -68,7 +69,7 @@ router.post(
 //@desc update the contact
 //@access private
 router.put('/:id', auth, async (req, res) => {
-  const { name, email, phone, relationShip } = req.body;
+  const { name, email, phone, type } = req.body;
 
   // Stores updated data
   const contactFields = {};
@@ -77,7 +78,7 @@ router.put('/:id', auth, async (req, res) => {
   if (name) contactFields.name = name;
   if (email) contactFields.email = email;
   if (phone) contactFields.phone = phone;
-  if (relationShip) contactFields.relationShip = relationShip;
+  if (type) contactFields.type = type;
 
   try {
     // Get contact id
