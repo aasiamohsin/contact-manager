@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import { AlertContext } from './AlertContext';
 import { AlertReducer } from './AlertReducer';
 import { Set_Alert, Remove_Alert } from '../Types';
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 export const AlertState = ({ children }) => {
   const initialState = [];
@@ -10,7 +10,7 @@ export const AlertState = ({ children }) => {
   const [state, dispatch] = useReducer(AlertReducer, initialState);
 
   const setAlert = (msg, type, timeout = 3000) => {
-    const id = uuid.v4();
+    const id = uuid();
     dispatch({
       type: Set_Alert,
       payload: { msg, type, id },
